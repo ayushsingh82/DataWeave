@@ -246,12 +246,15 @@ export async function getTransaction(transactionId: string): Promise<ArweaveTran
   
   const transaction = await arweave.transactions.get(transactionId);
   
+  // Convert data to base64 string
+  const dataBase64 = Buffer.from(transaction.data).toString('base64');
+  
   return {
     id: transaction.id,
     owner: transaction.owner,
     target: transaction.target,
     quantity: transaction.quantity,
-    data: transaction.data,
+    data: dataBase64,
     reward: transaction.reward,
     signature: transaction.signature,
     tags: transaction.tags,
@@ -306,7 +309,8 @@ export async function searchByTag(
 ): Promise<string[]> {
   const arweave = getArweave();
   
-  const query = `
+  const query = {
+    query: `
     {
       transactions(
         tags: [
@@ -329,7 +333,8 @@ export async function searchByTag(
         }
       }
     }
-  `;
+    `
+  };
 
   const result = await arweave.arql(query);
   

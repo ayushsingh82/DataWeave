@@ -12,6 +12,9 @@ import { generateId } from './arweave';
 import { createProvenanceRecord } from './provenance';
 import { generateMinerId } from './provenance';
 
+// Re-export types for convenience
+export type { MinerRunLog, MinerConfig, ZKProofData, ZKProofRequest };
+
 // ============================================
 // Miner Configuration & State
 // ============================================
@@ -39,8 +42,8 @@ export const DEFAULT_MINER_CONFIGS: MinerConfig[] = [
 ];
 
 // Active miner runs
-const activeRuns: Map<string, MinerRunLog> = new Map();
-const completedRuns: MinerRunLog[] = [];
+export const activeRuns: Map<string, MinerRunLog> = new Map();
+export const completedRuns: MinerRunLog[] = [];
 
 // ============================================
 // Miner Operations
