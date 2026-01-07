@@ -264,7 +264,6 @@ export async function getTransaction(transactionId: string): Promise<ArweaveTran
 export async function getTransactionData(transactionId: string): Promise<any> {
   const arweave = getArweave();
   
-  const transaction = await arweave.transactions.get(transactionId);
   const data = await arweave.transactions.getData(transactionId, {
     decode: true,
     string: true,
@@ -370,7 +369,7 @@ export async function verifyProvenanceRecord(
     // Verify data hash
     const dataString = JSON.stringify(transactionData);
     const crypto = require('crypto');
-    const computedHash = crypto.createHash('sha256').update(dataString).digest('hex');
+    const computedHash = crypto.createHash('sha256').update(dataString, 'utf8').digest('hex');
     
     const hashValid = computedHash === expectedHash;
     
@@ -448,7 +447,7 @@ export async function estimateTransactionCost(
   const arweave = getArweave();
   
   const price = await arweave.transactions.getPrice(dataSize);
-  return arweave.ar.winstonToAR(price);
+  return arweave.ar.winstonToAr(price);
 }
 
 /**
@@ -457,7 +456,7 @@ export async function estimateTransactionCost(
 export async function getNetworkPrice(): Promise<string> {
   const arweave = getArweave();
   const price = await arweave.transactions.getPrice(1024);
-  return arweave.ar.winstonToAR(price);
+  return arweave.ar.winstonToAr(price);
 }
 
 // ============================================
