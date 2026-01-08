@@ -57,13 +57,26 @@ export default function Home() {
       <header className="border-b-2 border-black bg-white">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-2 border-2 border-black bg-blue-600">
-                <Link className="w-6 h-6 text-white" />
-              </div>
+              <div className="flex items-center gap-2">
+              <svg
+                viewBox="0 0 40 40"
+                className="w-10 h-10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="40" height="40" rx="8" fill="#1e293b" />
+                <path
+                  d="M20 8L10 14V22L20 28L30 22V14L20 8Z"
+                  fill="#00C853"
+                  stroke="#00C853"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+                <circle cx="20" cy="18" r="4" fill="#1e293b" />
+              </svg>
               <div>
                 <h1 className="text-2xl font-bold text-black">
-                  Provenance Challenge
+                  DataWeave
                 </h1>
                 <p className="text-sm text-gray-600">
                   Decentralized AI Compute Provenance on Arweave
@@ -125,9 +138,24 @@ export default function Home() {
       <footer className="border-t-2 border-black mt-12">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-black">
-              <Cpu className="w-5 h-5 text-blue-600" />
-              <span className="font-medium">Powered by Arweave</span>
+            <div className="flex items-center gap-2">
+              <svg
+                viewBox="0 0 40 40"
+                className="w-8 h-8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="40" height="40" rx="8" fill="#1e293b" />
+                <path
+                  d="M20 8L10 14V22L20 28L30 22V14L20 8Z"
+                  fill="#00C853"
+                  stroke="#00C853"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+                <circle cx="20" cy="18" r="4" fill="#1e293b" />
+              </svg>
+              <span className="font-medium text-black">Powered by Arweave</span>
             </div>
             <div className="flex items-center gap-4 text-sm text-gray-600">
               <span>Immutable Storage</span>

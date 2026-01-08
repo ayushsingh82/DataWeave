@@ -171,7 +171,7 @@ export async function uploadProvenanceRecord(
   provenanceType: string
 ): Promise<string> {
   const tags: ArweaveTag[] = [
-    { name: 'App-Name', value: 'Provenance-Challenge' },
+    { name: 'App-Name', value: 'DataWeave' },
     { name: 'Version', value: '1.0.0' },
     { name: 'Content-Type', value: 'application/json' },
     { name: 'Record-ID', value: recordId },
@@ -195,7 +195,7 @@ export async function uploadMinerRunLog(
   minerId: string
 ): Promise<string> {
   const tags: ArweaveTag[] = [
-    { name: 'App-Name', value: 'Provenance-Challenge' },
+    { name: 'App-Name', value: 'DataWeave' },
     { name: 'Version', value: '1.0.0' },
     { name: 'Content-Type', value: 'application/json' },
     { name: 'Run-ID', value: runId },
@@ -219,7 +219,7 @@ export async function uploadZKProof(
   minerId: string
 ): Promise<string> {
   const tags: ArweaveTag[] = [
-    { name: 'App-Name', value: 'Provenance-Challenge' },
+    { name: 'App-Name', value: 'DataWeave' },
     { name: 'Version', value: '1.0.0' },
     { name: 'Content-Type', value: 'application/json' },
     { name: 'Proof-ID', value: proofId },
