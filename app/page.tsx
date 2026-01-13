@@ -17,6 +17,7 @@ import {
 import { Dashboard } from './components/Dashboard';
 import { MinerSimulation } from './components/MinerSimulation';
 import { SearchInterface } from './components/SearchInterface';
+import { Logo } from './components/Logo';
 import { ProvenanceRecord } from '@/types';
 
 type TabType = 'dashboard' | 'simulate' | 'search';
@@ -57,23 +58,8 @@ export default function Home() {
       <header className="border-b-2 border-black bg-white">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-              <svg
-                viewBox="0 0 40 40"
-                className="w-10 h-10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="40" height="40" rx="8" fill="#1e293b" />
-                <path
-                  d="M20 8L10 14V22L20 28L30 22V14L20 8Z"
-                  fill="#00C853"
-                  stroke="#00C853"
-                  strokeWidth="1.5"
-                  strokeLinejoin="round"
-                />
-                <circle cx="20" cy="18" r="4" fill="#1e293b" />
-              </svg>
+              <div className="flex items-center gap-3">
+              <Logo size="md" />
               <div>
                 <h1 className="text-2xl font-bold text-black">
                   DataWeave
@@ -139,22 +125,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <svg
-                viewBox="0 0 40 40"
-                className="w-8 h-8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="40" height="40" rx="8" fill="#1e293b" />
-                <path
-                  d="M20 8L10 14V22L20 28L30 22V14L20 8Z"
-                  fill="#00C853"
-                  stroke="#00C853"
-                  strokeWidth="1.5"
-                  strokeLinejoin="round"
-                />
-                <circle cx="20" cy="18" r="4" fill="#1e293b" />
-              </svg>
+              <Logo size="sm" />
               <span className="font-medium text-black">Powered by Arweave</span>
             </div>
             <div className="flex items-center gap-4 text-sm text-gray-600">
