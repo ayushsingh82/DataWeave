@@ -57,99 +57,128 @@ DataWeave focuses on creating a **transparent and immutable proof record system*
 
 ## DataWeave Workflow
 
-### Step-by-Step Process
+### Overview
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         WORKFLOW OVERVIEW                            │
-└─────────────────────────────────────────────────────────────────────┘
+The DataWeave system follows a six-step process from user interaction to permanent storage and verification.
 
-STEP 1: MINER SIMULATION
-────────────────────────
-User Interface Actions:
-  • Select miner (reasoner-alpha, proof-generator, etc.)
-  • Choose computation type (inference, training, reasoning)
-  • Configure input parameters
-  • Click "Start Simulation"
-                    │
-                    ▼
-STEP 2: COMPUTE EXECUTION & ZK PROOF GENERATION
-────────────────────────────────────────────────
-Processing:
-  • Execute AI computation
-  • Generate reasoning outputs
-  • Create zero-knowledge proof
-  • Calculate data hash (SHA-256)
-  • Collect metadata (model, version, timestamps)
-                    │
-                    ▼
-STEP 3: PROVENANCE RECORD CREATION
-──────────────────────────────────
-Record Structure:
-  • Generate unique record ID
-  • Create metadata object:
-    - minerId: source miner identifier
-    - type: compute|proof|reasoning
-    - timestamp: Unix timestamp
-    - inputs: array of input data
-    - outputs: array of output data
-    - reasoning: reasoning chain text
-    - dataHash: SHA-256 hash of data
-    - previousRecords: array of linked record IDs
-    - signature: digital signature
-                    │
-                    ▼
-STEP 4: ARWEAVE UPLOAD (PERMANENT STORAGE)
-──────────────────────────────────────────
-Arweave Transaction:
-  • Create transaction with record data
-  • Add transaction tags:
-    - App-Name: "DataWeave"
-    - Miner-ID: <minerId>
-    - Provenance-Type: <type>
-    - Timestamp: <timestamp>
-  • Sign transaction with wallet
-  • Upload to Arweave network
-  • Receive unique transaction ID (arweaveId)
-  • Data stored PERMANENTLY on permaweb
-                    │
-                    ▼
-STEP 5: INDEXING & QUERY SYSTEM
-────────────────────────────────
-Indexing:
-  • Index record by minerId
-  • Index record by type
-  • Index record by timestamp
-  • Store in-memory index (or database)
+### Step 1: Miner Simulation
 
-Query Capabilities:
-  • Search by miner ID
-  • Filter by type (compute/proof/reasoning)
-  • Time range queries
-  • Provenance chain traversal
-  • Full-text search on reasoning/metadata
-                    │
-                    ▼
-STEP 6: VERIFICATION & ATTRIBUTION
-───────────────────────────────────
-Verification Steps:
-  ✓ Verify data integrity (hash comparison)
-  ✓ Check Arweave transaction confirmation
-  ✓ Validate digital signature
-  ✓ Trace provenance chain (previousRecords linking)
-  ✓ Verify ZK proof validity
+**User Interface Actions:**
+- Select miner (reasoner-alpha, proof-generator, etc.)
+- Choose computation type (inference, training, reasoning)
+- Configure input parameters
+- Click "Start Simulation"
 
-Attribution:
-  • Clear miner ownership
-  • Timestamp verification
-  • View on Arweave Explorer
-    URL: viewblock.io/arweave/tx/<arweaveId>
-```
+**Output:** Configuration ready for processing
+
+---
+
+### Step 2: Compute Execution & ZK Proof Generation
+
+**Processing:**
+- Execute AI computation
+- Generate reasoning outputs
+- Create zero-knowledge proof
+- Calculate data hash (SHA-256)
+- Collect metadata (model, version, timestamps)
+
+**Output:** Computation results with ZK proof and hash
+
+---
+
+### Step 3: Provenance Record Creation
+
+**Record Structure:**
+- Generate unique record ID
+- Create metadata object containing:
+  - `minerId`: source miner identifier
+  - `type`: compute | proof | reasoning
+  - `timestamp`: Unix timestamp
+  - `inputs`: array of input data
+  - `outputs`: array of output data
+  - `reasoning`: reasoning chain text
+  - `dataHash`: SHA-256 hash of data
+  - `previousRecords`: array of linked record IDs
+  - `signature`: digital signature
+
+**Output:** Complete provenance record with all metadata
+
+---
+
+### Step 4: Arweave Upload (Permanent Storage)
+
+**Arweave Transaction:**
+- Create transaction with record data
+- Add transaction tags:
+  - `App-Name`: "DataWeave"
+  - `Miner-ID`: `<minerId>`
+  - `Provenance-Type`: `<type>`
+  - `Timestamp`: `<timestamp>`
+- Sign transaction with wallet
+- Upload to Arweave network
+- Receive unique transaction ID (`arweaveId`)
+- Data stored **PERMANENTLY** on permaweb
+
+**Output:** Arweave transaction ID for permanent record
+
+---
+
+### Step 5: Indexing & Query System
+
+**Indexing:**
+- Index record by `minerId`
+- Index record by `type`
+- Index record by `timestamp`
+- Store in-memory index (or database)
+
+**Query Capabilities:**
+- Search by miner ID
+- Filter by type (compute/proof/reasoning)
+- Time range queries
+- Provenance chain traversal
+- Full-text search on reasoning/metadata
+
+**Output:** Indexed record available for queries
+
+---
+
+### Step 6: Verification & Attribution
+
+**Verification Steps:**
+- Verify data integrity (hash comparison)
+- Check Arweave transaction confirmation
+- Validate digital signature
+- Trace provenance chain (previousRecords linking)
+- Verify ZK proof validity
+
+**Attribution:**
+- Clear miner ownership
+- Timestamp verification
+- View on Arweave Explorer: `viewblock.io/arweave/tx/<arweaveId>`
+
+**Output:** Verified and attributed provenance record
+
+---
 
 ### Data Flow Summary
 
-The complete flow: User Action → Miner Simulation → Compute Execution → 
-Provenance Record → Arweave Upload → Indexing → Verification
+```
+User Action 
+    ↓
+Miner Simulation 
+    ↓
+Compute Execution 
+    ↓
+Provenance Record 
+    ↓
+Arweave Upload 
+    ↓
+Indexing 
+    ↓
+Verification
+```
+
+**Complete Flow:** User initiates simulation → AI computation executes → Provenance record created → Uploaded to Arweave → Indexed for queries → Verified and attributed
 
 ## Getting Started
 
