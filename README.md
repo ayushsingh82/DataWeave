@@ -1,10 +1,10 @@
 # DataWeave - Powered by Arweave
 
-## 🏆 Best Provenance Architecture Award
+## Best Provenance Architecture Award
 
 This project demonstrates **transparent provenance for decentralized AI work** by building an immutable, permanent storage system for AI compute outputs and proofs using Arweave.
 
-## 🎯 Project Overview
+## Project Overview
 
 DataWeave focuses on creating a **transparent and immutable proof record system** for decentralized AI work. This solution establishes:
 - **Immutable audit trails** for AI compute outputs
@@ -12,7 +12,7 @@ DataWeave focuses on creating a **transparent and immutable proof record system*
 - **Verifiable attribution** of AI reasoning outputs
 - **Foundation for future agent audit trails**
 
-## 🌟 Key Features
+## Key Features
 
 ### 1. AI Compute Provenance
 - Store AI model outputs, training logs, and inference results permanently
@@ -34,7 +34,7 @@ DataWeave focuses on creating a **transparent and immutable proof record system*
 - Support search by miner ID, timestamp, computation type
 - Enable retrieval of complete provenance chains
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -55,75 +55,103 @@ DataWeave focuses on creating a **transparent and immutable proof record system*
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 
-## 🔄 DataWeave Workflow
+## DataWeave Workflow
+
+### Step-by-Step Process
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           WORKFLOW DIAGRAM                              │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│   1️⃣  MINER SIMULATION                                                  │
-│   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │  • Select miner (reasoner-alpha, proof-generator, etc.)          │   │
-│   │  • Choose computation type (inference, training, reasoning)      │   │
-│   │  • Configure input parameters                                    │   │
-│   │  • Click "Start Simulation"                                      │   │
-│   └─────────────────────────────────────────────────────────────────┘   │
-│                                  │                                       │
-│                                  ▼                                       │
-│   2️⃣  COMPUTE EXECUTION & ZK PROOF GENERATION                          │
-│   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │  • Execute AI computation                                        │   │
-│   │  • Generate reasoning outputs                                    │   │
-│   │  • Create zero-knowledge proof                                   │   │
-│   │  • Calculate data hash (SHA-256)                                 │   │
-│   └─────────────────────────────────────────────────────────────────┘   │
-│                                  │                                       │
-│                                  ▼                                       │
-│   3️⃣  PROVENANCE RECORD CREATION                                        │
-│   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │  • Create provenance record with metadata:                       │   │
-│   │    - minerId, type, timestamp                                    │   │
-│   │    - inputs, outputs, reasoning                                  │   │
-│   │    - dataHash, previousRecords (chain linking)                   │   │
-│   │    - digital signature                                           │   │
-│   └─────────────────────────────────────────────────────────────────┘   │
-│                                  │                                       │
-│                                  ▼                                       │
-│   4️⃣  ARWEAVE UPLOAD (PERMANENT STORAGE)                                │
-│   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │  • Upload to Arweave with tags:                                  │   │
-│   │    App-Name: DataWeave                                           │   │
-│   │    Miner-ID, Provenance-Type, Timestamp                          │   │
-│   │  • Receive unique transaction ID (arweaveId)                     │   │
-│   │  • Data stored PERMANENTLY on permaweb                           │   │
-│   └─────────────────────────────────────────────────────────────────┘   │
-│                                  │                                       │
-│                                  ▼                                       │
-│   5️⃣  INDEXING & QUERY                                                  │
-│   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │  • Index record by:                                              │   │
-│   │    - minerId, type, timestamp                                    │   │
-│   │  • Enable search and retrieval                                   │   │
-│   │  • Support provenance chain queries                              │   │
-│   └─────────────────────────────────────────────────────────────────┘   │
-│                                  │                                       │
-│                                  ▼                                       │
-│   6️⃣  VERIFICATION & ATTRIBUTION                                        │
-│   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │  • Verify data integrity (hash comparison)                       │   │
-│   │  • Check transaction confirmation                                │   │
-│   │  • Validate digital signature                                    │   │
-│   │  • Trace provenance chain (previousRecords linking)              │   │
-│   │  • View on Arweave Explorer (viewblock.io/arweave/tx/)          │   │
-│   └─────────────────────────────────────────────────────────────────┘   │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                         WORKFLOW OVERVIEW                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+STEP 1: MINER SIMULATION
+────────────────────────
+User Interface Actions:
+  • Select miner (reasoner-alpha, proof-generator, etc.)
+  • Choose computation type (inference, training, reasoning)
+  • Configure input parameters
+  • Click "Start Simulation"
+                    │
+                    ▼
+STEP 2: COMPUTE EXECUTION & ZK PROOF GENERATION
+────────────────────────────────────────────────
+Processing:
+  • Execute AI computation
+  • Generate reasoning outputs
+  • Create zero-knowledge proof
+  • Calculate data hash (SHA-256)
+  • Collect metadata (model, version, timestamps)
+                    │
+                    ▼
+STEP 3: PROVENANCE RECORD CREATION
+──────────────────────────────────
+Record Structure:
+  • Generate unique record ID
+  • Create metadata object:
+    - minerId: source miner identifier
+    - type: compute|proof|reasoning
+    - timestamp: Unix timestamp
+    - inputs: array of input data
+    - outputs: array of output data
+    - reasoning: reasoning chain text
+    - dataHash: SHA-256 hash of data
+    - previousRecords: array of linked record IDs
+    - signature: digital signature
+                    │
+                    ▼
+STEP 4: ARWEAVE UPLOAD (PERMANENT STORAGE)
+──────────────────────────────────────────
+Arweave Transaction:
+  • Create transaction with record data
+  • Add transaction tags:
+    - App-Name: "DataWeave"
+    - Miner-ID: <minerId>
+    - Provenance-Type: <type>
+    - Timestamp: <timestamp>
+  • Sign transaction with wallet
+  • Upload to Arweave network
+  • Receive unique transaction ID (arweaveId)
+  • Data stored PERMANENTLY on permaweb
+                    │
+                    ▼
+STEP 5: INDEXING & QUERY SYSTEM
+────────────────────────────────
+Indexing:
+  • Index record by minerId
+  • Index record by type
+  • Index record by timestamp
+  • Store in-memory index (or database)
+
+Query Capabilities:
+  • Search by miner ID
+  • Filter by type (compute/proof/reasoning)
+  • Time range queries
+  • Provenance chain traversal
+  • Full-text search on reasoning/metadata
+                    │
+                    ▼
+STEP 6: VERIFICATION & ATTRIBUTION
+───────────────────────────────────
+Verification Steps:
+  ✓ Verify data integrity (hash comparison)
+  ✓ Check Arweave transaction confirmation
+  ✓ Validate digital signature
+  ✓ Trace provenance chain (previousRecords linking)
+  ✓ Verify ZK proof validity
+
+Attribution:
+  • Clear miner ownership
+  • Timestamp verification
+  • View on Arweave Explorer
+    URL: viewblock.io/arweave/tx/<arweaveId>
 ```
 
 ### Data Flow Summary
 
-## 🚀 Getting Started
+The complete flow: User Action → Miner Simulation → Compute Execution → 
+Provenance Record → Arweave Upload → Indexing → Verification
+
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+
@@ -155,29 +183,9 @@ npm run dev
 # Open http://localhost:3000
 ```
 
-## 📁 Project Structure
 
-```
-my-app/
-├── app/
-│   ├── page.tsx              # Main UI
-│   ├── layout.tsx            # Root layout
-│   ├── globals.css           # Global styles
-│   ├── api/
-│   │   └── provenance/       # API routes
-│   └── components/           # React components
-├── lib/
-│   ├── arweave.ts           # Arweave integration
-│   ├── provenance.ts        # Provenance logic
-│   ├── miner.ts             # Miner simulation
-│   └── zkproof.ts           # ZK proof utilities
-├── types/
-│   └── index.ts             # TypeScript types
-├── README.md                # This file
-└── package.json
-```
 
-## 🔧 Core Components
+## Core Components
 
 ### Arweave Integration (`lib/arweave.ts`)
 - Initialize Arweave connection
@@ -203,7 +211,7 @@ my-app/
 - Verify proof chains
 - Maintain proof provenance
 
-## 💾 Data Schema
+## Data Schema
 
 ### Provenance Record
 ```typescript
@@ -244,7 +252,7 @@ interface MinerRunLog {
 }
 ```
 
-## 🎨 UI Components
+## UI Components
 
 ### 1. Provenance Dashboard
 - Real-time view of AI compute operations
@@ -266,14 +274,14 @@ interface MinerRunLog {
 - Arweave transaction verification
 - Chain of custody display
 
-## 🔐 Security & Verification
+## Security & Verification
 
 - **Immutable Storage**: All records permanently stored on Arweave
 - **Digital Signatures**: Cryptographic signing of provenance records
 - **Hash Verification**: Data integrity through SHA-256 hashing
 - **Chain Linking**: Records linked in verification chains
 
-## 🌐 API Endpoints
+## API Endpoints
 
 ### POST /api/provenance
 Create a new provenance record
@@ -311,7 +319,7 @@ Search provenance records
 }
 ```
 
-## 📊 Benefits of Arweave Provenance
+## Benefits of Arweave Provenance
 
 1. **Permanence**: Data stored forever with no ongoing costs
 2. **Tamper-Proof**: Cryptographic immutability ensures integrity
@@ -319,7 +327,7 @@ Search provenance records
 4. **Verifiability**: Anyone can verify the provenance chain
 5. **Attribution**: Clear ownership and source tracking
 
-## 🎯 Use Cases
+## Use Cases
 
 ### AI Model Training
 - Log training data sources
@@ -336,7 +344,7 @@ Search provenance records
 - Maintain proof verification records
 - Create audit trails for compliance
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] GraphQL API for complex queries
 - [ ] Real-time WebSocket updates
@@ -345,30 +353,30 @@ Search provenance records
 - [ ] Advanced indexing with Arweave GraphQL
 - [ ] Integration with decentralized AI marketplaces
 
-## 📚 Resources
+## Resources
 
 - [Arweave Documentation](https://docs.arweave.org/)
 - [Arweave JS SDK](https://github.com/ArweaveTeam/arweave-js)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [PermaWeb](https://permaweb.io/)
 
-## 🏆 Challenge Goals
+## Challenge Goals
 
 This project demonstrates:
-1. ✅ **Immutable AI proof storage** - Permanent records on Arweave
-2. ✅ **Attribution tracking** - Clear miner/compute ownership
-3. ✅ **Verifiable provenance** - Complete chains of custody
-4. ✅ **Foundation for audit trails** - Platform for future agent systems
+1. **Immutable AI proof storage** - Permanent records on Arweave
+2. **Attribution tracking** - Clear miner/compute ownership
+3. **Verifiable provenance** - Complete chains of custody
+4. **Foundation for audit trails** - Platform for future agent systems
 
-## 📄 License
+## License
 
 MIT License - See LICENSE file for details
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please read our contributing guidelines before submitting PRs.
 
 ---
 
-**Built with ❤️ for transparent AI provenance on Arweave**
+**Built for transparent AI provenance on Arweave**
 
