@@ -101,8 +101,8 @@ export function Dashboard({ records }: DashboardProps) {
                 {stats.computeRecords}
               </p>
             </div>
-            <div className="p-3 border-2 border-black bg-blue-100">
-              <Cpu className="w-6 h-6 text-blue-600" />
+            <div className="p-3 border-2 border-black bg-emerald-100">
+              <Cpu className="w-6 h-6 text-emerald-600" />
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ export function Dashboard({ records }: DashboardProps) {
       {/* Recent Records */}
       <div>
         <div className="flex items-center gap-2 mb-4">
-          <Clock className="w-5 h-5 text-blue-600" />
+          <Clock className="w-5 h-5 text-emerald-600" />
           <h2 className="text-xl font-bold text-black">Recent Records</h2>
         </div>
 
@@ -194,7 +194,7 @@ export function Dashboard({ records }: DashboardProps) {
                     </p>
                   </div>
                   <button className="p-2 border-2 border-black hover:bg-gray-100">
-                    <ExternalLink className="w-4 h-4 text-blue-600" />
+                    <ExternalLink className="w-4 h-4 text-emerald-600" />
                   </button>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export function Dashboard({ records }: DashboardProps) {
       {/* Activity Chart */}
       <div className="card p-6">
         <div className="flex items-center gap-2 mb-4">
-          <TrendingUp className="w-5 h-5 text-blue-600" />
+          <TrendingUp className="w-5 h-5 text-emerald-600" />
           <h2 className="text-xl font-bold text-black">Provenance Activity</h2>
         </div>
         <div className="h-32 flex items-end justify-around gap-2">
@@ -215,7 +215,7 @@ export function Dashboard({ records }: DashboardProps) {
             return (
               <div
                 key={i}
-                className="w-12 bg-blue-600 border-2 border-black"
+                className="w-12 bg-emerald-600 border-2 border-black"
                 style={{ height: `${height}%` }}
               />
             );

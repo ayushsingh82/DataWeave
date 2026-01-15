@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Sidebar from './Sidebar';
+import Hero from './Hero';
 import { Dashboard } from './Dashboard';
 import { MinerSimulation } from './MinerSimulation';
 import { SearchInterface } from './SearchInterface';
@@ -15,11 +16,13 @@ interface DashboardLayoutProps {
 }
 
 export default function DashboardLayout({ records, onRecordCreated }: DashboardLayoutProps) {
-  const [activeSection, setActiveSection] = useState('dashboard');
+  const [activeSection, setActiveSection] = useState('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const renderContent = () => {
     switch (activeSection) {
+      case 'home':
+        return <Hero />;
       case 'dashboard':
         return <Dashboard records={records} />;
       case 'problem-solution':
@@ -31,7 +34,7 @@ export default function DashboardLayout({ records, onRecordCreated }: DashboardL
       case 'search':
         return <SearchInterface records={records} />;
       default:
-        return <Dashboard records={records} />;
+        return <Hero />;
     }
   };
 

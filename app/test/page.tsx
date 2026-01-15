@@ -89,7 +89,7 @@ export default function TestPage() {
 
     // Test 4: Logo Component
     try {
-      const Logo = await import('../components/Logo');
+      const Logo = await import('../components/ui/Logo');
       results.push({
         name: 'Logo Component',
         status: 'pass',

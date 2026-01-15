@@ -13,9 +13,9 @@ interface SidebarProps {
 export default function Sidebar({ activeSection, onSectionChange, isOpen, onClose }: SidebarProps) {
   const navItems = [
     { 
-      id: 'dashboard', 
-      name: 'Dashboard', 
-      icon: 'database' as const 
+      id: 'home', 
+      name: 'Home', 
+      icon: 'home' as const 
     },
     { 
       id: 'problem-solution', 
@@ -23,14 +23,19 @@ export default function Sidebar({ activeSection, onSectionChange, isOpen, onClos
       icon: 'question' as const 
     },
     { 
-      id: 'simulate', 
-      name: 'Agent Simulation', 
-      icon: 'server' as const 
-    },
-    { 
       id: 'architecture', 
       name: 'Architecture', 
       icon: 'lock' as const 
+    },
+    { 
+      id: 'dashboard', 
+      name: 'Dashboard', 
+      icon: 'database' as const 
+    },
+    { 
+      id: 'simulate', 
+      name: 'Agent Simulation', 
+      icon: 'server' as const 
     },
     { 
       id: 'search', 
@@ -60,7 +65,7 @@ export default function Sidebar({ activeSection, onSectionChange, isOpen, onClos
           <div className="p-6 border-b border-gray-900 flex items-center justify-between">
             <button
               onClick={() => {
-                onSectionChange('dashboard');
+                onSectionChange('home');
                 onClose();
               }}
               className="flex items-center hover:opacity-80 transition-opacity"
@@ -121,7 +126,7 @@ export default function Sidebar({ activeSection, onSectionChange, isOpen, onClos
 
         {/* Footer in Sidebar */}
         <div className="p-4 border-t border-gray-900">
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-xs text-white text-center">
             © 2026 DataWeave
           </p>
         </div>
