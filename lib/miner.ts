@@ -1,5 +1,6 @@
 // Miner Simulation Library
 // Simulates AI miner operations and generates provenance records
+// Future: Integrate with Amadeus Agent Studio for real agent operations
 
 import { 
   MinerRunLog, 
@@ -11,6 +12,13 @@ import {
 import { generateId } from './arweave';
 import { createProvenanceRecord } from './provenance';
 import { generateMinerId } from './provenance';
+
+// TODO: Amadeus Agent Integration
+// - Connect to Amadeus Agent Studio
+// - Capture real agent operations (not simulated)
+// - Link to uPoW validated computations
+// - Integrate with x402 payment rails
+// - Track agent reputation on-chain
 
 // Re-export types for convenience
 export type { MinerRunLog, MinerConfig, ZKProofData, ZKProofRequest };

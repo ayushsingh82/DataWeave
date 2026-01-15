@@ -1,5 +1,6 @@
 // Provenance System Library
 // Core logic for creating and managing AI compute provenance records
+// Integrated with Amadeus L1 for real-time agent operation capture
 
 import { 
   ProvenanceRecord, 
@@ -16,6 +17,13 @@ import {
   getTransactionData,
   getTransactionStatus
 } from './arweave';
+
+// TODO: Amadeus L1 Integration
+// - Connect to Amadeus RPC endpoint
+// - Capture agent operations in real-time
+// - Link provenance records to Amadeus blocks
+// - Integrate with uPoW validated computations
+// - Store agent wallet addresses and task IDs
 
 // ============================================
 // In-Memory Storage (for demo purposes)

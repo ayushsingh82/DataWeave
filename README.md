@@ -1,184 +1,562 @@
-# DataWeave - Powered by Arweave
+# DataWeave
+## Immutable Provenance for AI Agent Economy
 
-## Best Provenance Architecture Award
+> **Building transparent, verifiable provenance infrastructure for AI agents on Amadeus L1 - where every agent action, computation, and collaboration is permanently recorded and cryptographically verified.**
 
-This project demonstrates **transparent provenance for decentralized AI work** by building an immutable, permanent storage system for AI compute outputs and proofs using Arweave.
+---
 
-## Project Overview
+## Table of Contents
 
-DataWeave focuses on creating a **transparent and immutable proof record system** for decentralized AI work. This solution establishes:
-- **Immutable audit trails** for AI compute outputs
-- **Permanent storage** of miner/zk proof logs
-- **Verifiable attribution** of AI reasoning outputs
-- **Foundation for future agent audit trails**
+- [Overview](#overview)
+- [System Flow](#system-flow)
+- [The Problem](#the-problem)
+- [The Solution](#the-solution)
+- [Why DataWeave?](#why-dataweave)
+- [Architecture](#architecture)
+- [Key Features](#key-features)
+- [Use Cases](#use-cases)
+- [Amadeus Integration](#amadeus-integration)
+- [Technical Stack](#technical-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Roadmap](#roadmap)
 
-## Key Features
+---
 
-### 1. AI Compute Provenance
-- Store AI model outputs, training logs, and inference results permanently
-- Link each compute job to its source data, model version, and timestamp
-- Create immutable records of AI decision-making processes
+## Overview
 
-### 2. Miner Simulation Integration
-- Simulate decentralized AI miner operations
-- Log miner runs with full context (inputs, outputs, computation time)
-- Store reasoning chains and intermediate states
+**DataWeave** is a decentralized provenance protocol that creates immutable, verifiable audit trails for AI agent operations on Amadeus L1. It enables transparent tracking of agent computations, collaborations, and decision-making processes with permanent storage on Arweave.
 
-### 3. Zero-Knowledge Proof Storage
-- Store zk-proofs and verification results
-- Maintain proof chains for auditability
-- Enable verification of AI computation integrity
+### Core Innovation
 
-### 4. Indexing & Query System
-- Efficiently index stored provenance records
-- Support search by miner ID, timestamp, computation type
-- Enable retrieval of complete provenance chains
+DataWeave transforms AI agent operations from opaque black boxes into verifiable, auditable systems:
 
-## Architecture
+- **Immutable Audit Trails**: Every agent action permanently stored on Arweave
+- **Cryptographic Verification**: Zero-knowledge proofs for computation integrity
+- **Agent Provenance**: Complete chain of custody for agent decisions
+- **Collaboration Tracking**: Transparent records of multi-agent interactions
+- **On-Chain Integration**: Native Amadeus L1 integration for real-time provenance
+
+---
+
+## System Flow
+
+### Complete DataWeave Provenance Workflow
+
+This flow explains how DataWeave captures and verifies AI agent operations on Amadeus. Use this for demo video narration.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                           DataWeave Pipeline                            │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│   ┌─────────────┐     ┌─────────────┐     ┌─────────────┐              │
-│   │   AI/Miner  │────▶│   Arweave   │────▶│   Indexing  │              │
-│   │   Compute   │     │   Storage   │     │   Service   │              │
-│   └─────────────┘     └─────────────┘     └─────────────┘              │
-│         │                    │                     │                    │
-│         │                    │                     │                    │
-│         ▼                    ▼                     ▼                    │
-│   ┌─────────────┐     ┌─────────────┐     ┌─────────────┐              │
-│   │ ZK Proofs   │     │  Immutable  │     │  Query API  │              │
-│   │ Generator   │     │   Records   │     │  & Search   │              │
-│   └─────────────┘     └─────────────┘     └─────────────┘              │
-│                                                                         │
+│                    DATAWEAVE PROVENANCE FLOW                             │
 └─────────────────────────────────────────────────────────────────────────┘
 
-## DataWeave Workflow
+┌──────────────┐
+│   STEP 1     │
+│   AGENT       │
+│  OPERATION   │
+└──────┬───────┘
+       │
+       │ AI Agent executes task on Amadeus L1
+       │ (e.g., DeFi strategy, data analysis, prediction)
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Agent Operation Triggered:                                          │
+│ - Agent receives task via Amadeus Agent Studio                      │
+│ - Task parameters logged on-chain                                   │
+│ - Agent wallet address recorded                                      │
+│ - Execution context captured                                         │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 2     │
+│  COMPUTE     │
+│  EXECUTION   │
+└──────┬───────┘
+       │
+       │ Agent performs computation using uPoW
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Computation Process:                                                 │
+│                                                                      │
+│ 1. uPoW Execution:                                                  │
+│    - Agent computation runs on Amadeus uPoW network                 │
+│    - Tensorcore MatMul operations validated                         │
+│    - Useful work contributes to AI training                         │
+│    - Computation hash generated                                      │
+│                                                                      │
+│ 2. Reasoning Capture:                                                │
+│    - Agent reasoning chain logged                                   │
+│    - Decision points recorded                                        │
+│    - Intermediate states captured                                   │
+│    - Model inference tracked                                         │
+│                                                                      │
+│ 3. Output Generation:                                                │
+│    - Final results produced                                          │
+│    - Quality metrics calculated                                      │
+│    - Execution metadata collected                                    │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 3     │
+│  PROVENANCE  │
+│   RECORD     │
+└──────┬───────┘
+       │
+       │ Create immutable provenance record
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Provenance Record Creation:                                          │
+│                                                                      │
+│ Record Structure:                                                    │
+│ - Agent ID: Unique identifier on Amadeus                            │
+│ - Task ID: On-chain task identifier                                 │
+│ - Timestamp: Block timestamp from Amadeus                          │
+│ - Input Hash: SHA-256 of input data                                 │
+│ - Output Hash: SHA-256 of output data                               │
+│ - Reasoning Chain: Complete decision path                            │
+│ - uPoW Proof: Link to validated computation                         │
+│ - Previous Records: Linked provenance chain                          │
+│ - Signature: Cryptographic signature                                 │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 4     │
+│  ZK PROOF    │
+│  GENERATION  │
+└──────┬───────┘
+       │
+       │ Generate zero-knowledge proof via zkVerify
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ zkVerify Proof Generation:                                           │
+│                                                                      │
+│ 1. Proof Creation:                                                   │
+│    - zkVerify generates ZK proof of computation                     │
+│    - Proves work was completed correctly                            │
+│    - Verifies output quality without revealing inputs                │
+│    - Validates agent reasoning integrity                             │
+│                                                                      │
+│ 2. Proof Types:                                                      │
+│    - Proof of Computation: Work was performed                       │
+│    - Proof of Quality: Output meets criteria                        │
+│    - Proof of Timeliness: Completed within timeframe                │
+│    - Proof of Originality: Not plagiarized                         │
+│                                                                      │
+│ 3. Proof Storage:                                                    │
+│    - Proof metadata stored on Amadeus                              │
+│    - Full proof data prepared for Arweave                            │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 5     │
+│  ARWEAVE     │
+│   STORAGE    │
+└──────┬───────┘
+       │
+       │ Upload to permanent storage on Arweave
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Arweave Permanent Storage:                                           │
+│                                                                      │
+│ 1. Transaction Creation:                                             │
+│    - Create Arweave transaction with full record                    │
+│    - Add transaction tags:                                          │
+│      • App-Name: "DataWeave"                                        │
+│      • Agent-ID: <agentId>                                          │
+│      • Task-ID: <taskId>                                            │
+│      • Amadeus-Block: <blockHeight>                                 │
+│      • Provenance-Type: compute | proof | reasoning                 │
+│      • Timestamp: <timestamp>                                       │
+│                                                                      │
+│ 2. Permanent Upload:                                                │
+│    - Sign transaction with wallet                                    │
+│    - Upload to Arweave network                                      │
+│    - Receive unique transaction ID (arweaveId)                     │
+│    - Data stored PERMANENTLY on permaweb                            │
+│                                                                      │
+│ 3. On-Chain Anchor:                                                 │
+│    - Store arweaveId on Amadeus L1                                  │
+│    - Link provenance to on-chain task                                │
+│    - Enable cross-chain verification                                 │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 6     │
+│  INDEXING    │
+│   & QUERY    │
+└──────┬───────┘
+       │
+       │ Index for efficient retrieval
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Indexing & Query System:                                             │
+│                                                                      │
+│ 1. Indexing:                                                         │
+│    - Index by Agent ID                                               │
+│    - Index by Task ID                                                │
+│    - Index by Timestamp                                              │
+│    - Index by Provenance Type                                        │
+│    - Index by Amadeus Block Height                                   │
+│                                                                      │
+│ 2. Query Capabilities:                                                │
+│    - Search by agent ID                                              │
+│    - Filter by task type                                             │
+│    - Time range queries                                              │
+│    - Provenance chain traversal                                      │
+│    - Cross-reference with Amadeus blocks                             │
+│                                                                      │
+│ 3. API Endpoints:                                                    │
+│    - GET /api/provenance/[id]                                        │
+│    - GET /api/provenance/search                                      │
+│    - GET /api/provenance/agent/[agentId]                            │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 7     │
+│ VERIFICATION │
+│   PHASE      │
+└──────┬───────┘
+       │
+       │ Verify provenance integrity
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Verification Process:                                                │
+│                                                                      │
+│ 1. Data Integrity:                                                  │
+│    - Verify hash matches stored data                                │
+│    - Check Arweave transaction confirmation                          │
+│    - Validate digital signature                                      │
+│                                                                      │
+│ 2. Chain Verification:                                               │
+│    - Verify Amadeus block reference                                 │
+│    - Check uPoW proof validity                                       │
+│    - Validate zkVerify proof                                         │
+│    - Trace provenance chain (previousRecords)                        │
+│                                                                      │
+│ 3. Attribution:                                                      │
+│    - Verify agent ownership                                          │
+    - Check timestamp consistency                                       │
+│    - Validate task completion                                        │
+│    - View on Arweave Explorer: viewblock.io/arweave/tx/<id>         │
+└─────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────┐
+│   STEP 8     │
+│  REPUTATION  │
+│   UPDATE     │
+└──────┬───────┘
+       │
+       │ Update agent reputation on Amadeus
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ Reputation System:                                                   │
+│                                                                      │
+│ 1. Reputation Calculation:                                           │
+│    - Aggregate provenance records for agent                          │
+│    - Calculate success rate                                          │
+│    - Weight by task complexity                                       │
+│    - Factor in verification proofs                                    │
+│                                                                      │
+│ 2. On-Chain Update:                                                  │
+│    - Update agent reputation score on Amadeus                       │
+│    - Store reputation history                                        │
+│    - Enable reputation-based agent discovery                         │
+│                                                                      │
+│ 3. Marketplace Integration:                                          │
+│    - Higher reputation = better job opportunities                    │
+│    - Agents can charge premium for verified work                     │
+│    - Transparent reputation builds trust                             │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
-### Overview
-
-The DataWeave system follows a six-step process from user interaction to permanent storage and verification.
-
-### Step 1: Miner Simulation
-
-**User Interface Actions:**
-- Select miner (reasoner-alpha, proof-generator, etc.)
-- Choose computation type (inference, training, reasoning)
-- Configure input parameters
-- Click "Start Simulation"
-
-**Output:** Configuration ready for processing
+**Complete Flow:** Agent Operation → Compute Execution → Provenance Record → ZK Proof → Arweave Storage → Indexing → Verification → Reputation Update
 
 ---
 
-### Step 2: Compute Execution & ZK Proof Generation
+## The Problem
 
-**Processing:**
-- Execute AI computation
-- Generate reasoning outputs
-- Create zero-knowledge proof
-- Calculate data hash (SHA-256)
-- Collect metadata (model, version, timestamps)
+### Current State of AI Agent Operations
 
-**Output:** Computation results with ZK proof and hash
+AI agents today operate in opaque environments with no verifiable audit trails:
 
----
+**No Transparency**
+- Agent decisions are black boxes
+- No way to verify what agents actually did
+- Cannot audit agent reasoning processes
+- No accountability for agent actions
 
-### Step 3: Provenance Record Creation
+**No Permanent Records**
+- Agent operations are ephemeral
+- No immutable history of agent work
+- Cannot trace agent decision chains
+- Lost context when agents restart
 
-**Record Structure:**
-- Generate unique record ID
-- Create metadata object containing:
-  - `minerId`: source miner identifier
-  - `type`: compute | proof | reasoning
-  - `timestamp`: Unix timestamp
-  - `inputs`: array of input data
-  - `outputs`: array of output data
-  - `reasoning`: reasoning chain text
-  - `dataHash`: SHA-256 hash of data
-  - `previousRecords`: array of linked record IDs
-  - `signature`: digital signature
+**No Verification**
+- Cannot prove agent work quality
+- No cryptographic verification of outputs
+- Cannot verify computation integrity
+- No way to detect agent manipulation
 
-**Output:** Complete provenance record with all metadata
-
----
-
-### Step 4: Arweave Upload (Permanent Storage)
-
-**Arweave Transaction:**
-- Create transaction with record data
-- Add transaction tags:
-  - `App-Name`: "DataWeave"
-  - `Miner-ID`: `<minerId>`
-  - `Provenance-Type`: `<type>`
-  - `Timestamp`: `<timestamp>`
-- Sign transaction with wallet
-- Upload to Arweave network
-- Receive unique transaction ID (`arweaveId`)
-- Data stored **PERMANENTLY** on permaweb
-
-**Output:** Arweave transaction ID for permanent record
+**No Attribution**
+- Cannot track which agent did what
+- No ownership records for agent outputs
+- Cannot build agent reputation
+- No way to reward quality work
 
 ---
 
-### Step 5: Indexing & Query System
+## The Solution
 
-**Indexing:**
-- Index record by `minerId`
-- Index record by `type`
-- Index record by `timestamp`
-- Store in-memory index (or database)
+DataWeave creates a complete provenance infrastructure for AI agents on Amadeus L1:
 
-**Query Capabilities:**
-- Search by miner ID
-- Filter by type (compute/proof/reasoning)
+### Immutable Audit Trails
+Every agent operation is permanently recorded on Arweave with cryptographic verification. Complete history of agent decisions, reasoning, and outputs.
+
+### Zero-Knowledge Verification
+zkVerify generates cryptographic proofs that verify agent work quality without revealing sensitive inputs. Enables trustless verification of agent outputs.
+
+### On-Chain Integration
+Native Amadeus L1 integration captures agent operations in real-time. Links provenance records to on-chain tasks, payments, and agent interactions.
+
+### Agent Reputation System
+Build verifiable reputation based on proven work history. Agents with better provenance records earn higher reputation and better opportunities.
+
+---
+
+## Why DataWeave?
+
+### For Agent Developers
+- **Transparent Operations**: Build trust through verifiable agent actions
+- **Reputation Building**: Earn reputation through proven work quality
+- **Audit Compliance**: Meet regulatory requirements with complete audit trails
+- **Debugging**: Trace agent decisions to identify and fix issues
+
+### For Agent Users
+- **Trust Verification**: Verify agent work quality before payment
+- **Risk Reduction**: Check agent reputation and past performance
+- **Dispute Resolution**: Resolve conflicts with immutable records
+- **Quality Assurance**: Ensure agents meet specified criteria
+
+### For the Amadeus Ecosystem
+- **Network Trust**: Build trust in the agent economy
+- **Compliance**: Enable regulatory compliance for agent operations
+- **Innovation**: Enable new use cases requiring verifiable agent work
+- **Growth**: Attract enterprise users requiring audit trails
+
+---
+
+## Architecture
+
+### 6-Layer Provenance Stack
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    DATAWEAVE ARCHITECTURE                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+Layer 6: Application Layer
+├── Dashboard UI
+├── Search Interface
+├── Provenance Viewer
+└── Agent Analytics
+
+Layer 5: API Layer
+├── Provenance API (/api/provenance)
+├── Search API (/api/provenance/search)
+├── Agent API (/api/provenance/agent/[id])
+└── Verification API (/api/provenance/verify)
+
+Layer 4: Provenance Engine
+├── Record Creation
+├── Chain Linking
+├── Indexing Service
+└── Query Engine
+
+Layer 3: Verification Layer
+├── zkVerify Integration
+├── Hash Verification
+├── Signature Validation
+└── Chain Verification
+
+Layer 2: Storage Layer
+├── Arweave Integration
+├── Amadeus L1 Anchoring
+├── Transaction Management
+└── Data Retrieval
+
+Layer 1: Amadeus L1
+├── Agent Execution
+├── uPoW Validation
+├── Task Registry
+└── Agent Registry
+```
+
+### Component Details
+
+**Application Layer**
+- React-based dashboard for viewing provenance records
+- Search interface for querying agent operations
+- Analytics dashboard for agent performance metrics
+- Real-time updates via WebSocket connections
+
+**API Layer**
+- RESTful API for provenance record management
+- GraphQL support for complex queries
+- WebSocket endpoints for real-time updates
+- Rate limiting and authentication
+
+**Provenance Engine**
+- Creates structured provenance records
+- Links records in verification chains
+- Indexes records for efficient querying
+- Maintains metadata for attribution
+
+**Verification Layer**
+- Integrates with zkVerify for proof generation
+- Validates data integrity via hashing
+- Verifies cryptographic signatures
+- Traces provenance chains
+
+**Storage Layer**
+- Permanent storage on Arweave permaweb
+- On-chain anchoring on Amadeus L1
+- Transaction management and retry logic
+- Efficient data retrieval and caching
+
+**Amadeus L1 Integration**
+- Captures agent operations in real-time
+- Links to uPoW validated computations
+- Integrates with task and agent registries
+- Enables on-chain reputation updates
+
+---
+
+## Key Features
+
+### 1. Immutable Provenance Records
+- Every agent operation permanently stored on Arweave
+- Cryptographic hashing ensures data integrity
+- Complete audit trail from task creation to completion
+- Linked records create verifiable chains
+
+### 2. Zero-Knowledge Verification
+- zkVerify integration for proof generation
+- Verify work quality without revealing inputs
+- Cryptographic proofs of computation integrity
+- Trustless verification of agent outputs
+
+### 3. Real-Time Amadeus Integration
+- Capture agent operations as they happen
+- Link to Amadeus L1 blocks and transactions
+- Integrate with uPoW validated computations
+- Real-time provenance updates
+
+### 4. Agent Reputation System
+- Build reputation from proven work history
+- On-chain reputation scores
+- Reputation-based agent discovery
+- Transparent reputation metrics
+
+### 5. Advanced Search & Query
+- Search by agent ID, task type, timestamp
+- Filter by provenance type
 - Time range queries
 - Provenance chain traversal
-- Full-text search on reasoning/metadata
 
-**Output:** Indexed record available for queries
-
----
-
-### Step 6: Verification & Attribution
-
-**Verification Steps:**
-- Verify data integrity (hash comparison)
-- Check Arweave transaction confirmation
-- Validate digital signature
-- Trace provenance chain (previousRecords linking)
-- Verify ZK proof validity
-
-**Attribution:**
-- Clear miner ownership
-- Timestamp verification
-- View on Arweave Explorer: `viewblock.io/arweave/tx/<arweaveId>`
-
-**Output:** Verified and attributed provenance record
+### 6. Dashboard & Analytics
+- Real-time view of agent operations
+- Provenance statistics and metrics
+- Agent performance analytics
+- Visual provenance chain display
 
 ---
 
-### Data Flow Summary
+## Use Cases
 
-```
-User Action 
-    ↓
-Miner Simulation 
-    ↓
-Compute Execution 
-    ↓
-Provenance Record 
-    ↓
-Arweave Upload 
-    ↓
-Indexing 
-    ↓
-Verification
-```
+### DeFi Agent Operations
+Track and verify DeFi strategy execution by AI agents. Prove that agents executed trades correctly, followed risk parameters, and achieved stated returns.
 
-**Complete Flow:** User initiates simulation → AI computation executes → Provenance record created → Uploaded to Arweave → Indexed for queries → Verified and attributed
+### Content Generation Agents
+Verify that content generation agents created original work, met quality standards, and completed tasks on time. Resolve plagiarism disputes with immutable records.
+
+### Data Analysis Agents
+Track data analysis workflows, verify computation integrity, and prove that agents used correct data sources and methodologies.
+
+### Multi-Agent Collaboration
+Track how multiple agents collaborated on complex tasks. Verify each agent's contribution and resolve disputes with complete audit trails.
+
+### Regulatory Compliance
+Meet regulatory requirements for AI agent operations. Provide complete audit trails for compliance audits and regulatory reporting.
+
+---
+
+## Amadeus Integration
+
+### uPoW (Useful Proof of Work)
+- Link provenance records to uPoW validated computations
+- Prove that agent work contributed to useful AI training
+- Verify computation integrity through uPoW proofs
+
+### Agent Studio Integration
+- Capture agent operations from Agent Studio
+- Link provenance to agent deployments
+- Track agent lifecycle and updates
+
+### x402 Payment Rails
+- Link provenance records to agent payments
+- Verify payment completion and task fulfillment
+- Enable payment disputes with immutable records
+
+### Swarm Coordination
+- Track multi-agent collaboration provenance
+- Verify agent coordination and communication
+- Record swarm decision-making processes
+
+### Oracle Streams
+- Link provenance to oracle data usage
+- Verify data source authenticity
+- Track oracle data consumption by agents
+
+---
+
+## Technical Stack
+
+### Frontend
+- **Next.js 16**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first styling
+- **Lucide React**: Icon library
+
+### Backend
+- **Next.js API Routes**: Serverless API endpoints
+- **Node.js**: Runtime environment
+
+### Blockchain Integration
+- **Amadeus L1**: Primary blockchain for agent operations
+- **Arweave**: Permanent storage for provenance records
+- **zkVerify**: Zero-knowledge proof generation
+
+### Libraries
+- **arweave**: Arweave SDK for storage
+- **crypto**: Cryptographic operations
+- **clsx**: Conditional class names
+
+---
 
 ## Getting Started
 
@@ -186,12 +564,13 @@ Verification
 - Node.js 18+
 - npm or yarn
 - Arweave wallet (for permanent storage)
+- Amadeus testnet access
 
 ### Installation
 
 ```bash
 # Navigate to project directory
-cd my-app
+cd DataWeave
 
 # Install dependencies
 npm install
@@ -199,9 +578,26 @@ npm install
 # Install Arweave SDK
 npm install arweave
 
-# Install additional dependencies for UI
-npm install lucide-react
+# Start development server
+npm run dev
 ```
+
+### Configuration
+
+1. **Arweave Configuration**
+   - Set up Arweave wallet
+   - Configure Arweave gateway
+   - Set transaction tags
+
+2. **Amadeus Integration**
+   - Connect to Amadeus testnet
+   - Configure agent registry
+   - Set up uPoW validation
+
+3. **zkVerify Setup**
+   - Configure zkVerify endpoint
+   - Set proof generation parameters
+   - Enable verification
 
 ### Development
 
@@ -209,203 +605,88 @@ npm install lucide-react
 # Start development server
 npm run dev
 
-# Open http://localhost:3000
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
+---
 
+## Project Structure
 
-## Core Components
-
-### Arweave Integration (`lib/arweave.ts`)
-- Initialize Arweave connection
-- Create transactions for provenance records
-- Upload data to permanent storage
-- Retrieve and verify stored records
-
-### Provenance System (`lib/provenance.ts`)
-- Create provenance records for AI compute
-- Link records in chains for verification
-- Index records for efficient querying
-- Maintain metadata for attribution
-
-### Miner Simulation (`lib/miner.ts`)
-- Simulate AI miner operations
-- Generate compute outputs with metadata
-- Create reasoning logs
-- Prepare data for permanent storage
-
-### ZK Proof Utilities (`lib/zkproof.ts`)
-- Generate zero-knowledge proofs
-- Store proof metadata
-- Verify proof chains
-- Maintain proof provenance
-
-## Data Schema
-
-### Provenance Record
-```typescript
-interface ProvenanceRecord {
-  id: string;              // Unique identifier
-  type: 'compute' | 'proof' | 'reasoning';
-  minerId: string;         // Source miner
-  timestamp: number;       // Unix timestamp
-  dataHash: string;        // Hash of stored data
-  arweaveId: string;       // Arweave transaction ID
-  metadata: {
-    modelVersion?: string;
-    computationType: string;
-    inputs: string[];
-    outputs: string[];
-    reasoning?: string;
-  };
-  previousRecords: string[]; // Linked provenance chain
-  signature: string;         // Digital signature
-}
+```
+DataWeave/
+├── app/
+│   ├── api/
+│   │   └── provenance/
+│   │       ├── route.ts              # Provenance API endpoints
+│   │       ├── [id]/
+│   │       │   └── route.ts         # Get specific record
+│   │       └── search/
+│   │           └── route.ts          # Search endpoint
+│   ├── components/
+│   │   ├── Dashboard.tsx            # Main dashboard
+│   │   ├── MinerSimulation.tsx      # Agent simulation
+│   │   ├── SearchInterface.tsx      # Search UI
+│   │   └── Logo.tsx                 # Logo component
+│   ├── page.tsx                      # Main page
+│   ├── layout.tsx                    # Root layout
+│   └── globals.css                   # Global styles
+├── lib/
+│   ├── arweave.ts                    # Arweave integration
+│   ├── provenance.ts                 # Provenance engine
+│   ├── miner.ts                      # Agent simulation
+│   ├── zkproof.ts                    # ZK proof utilities
+│   └── utils.ts                      # Utility functions
+├── types/
+│   └── index.ts                      # TypeScript types
+├── public/                           # Static assets
+├── README.md                         # This file
+└── package.json                      # Dependencies
 ```
 
-### Miner Run Log
-```typescript
-interface MinerRunLog {
-  runId: string;
-  minerId: string;
-  startTime: number;
-  endTime: number;
-  inputs: any[];
-  outputs: any[];
-  reasoning: string;
-  zkProof?: {
-    proofId: string;
-    proofData: string;
-    verificationResult: boolean;
-  };
-}
-```
+---
 
-## UI Components
+## Roadmap
 
-### 1. Provenance Dashboard
-- Real-time view of AI compute operations
-- Recent provenance records display
-- Arweave storage statistics
+### Phase 1: Core Provenance (Current)
+- [x] Arweave integration
+- [x] Basic provenance record creation
+- [x] Dashboard UI
+- [x] Search functionality
 
-### 2. Miner Simulation Panel
-- Trigger miner operations
-- View reasoning outputs
-- Generate ZK proofs
+### Phase 2: Amadeus Integration
+- [ ] Amadeus L1 agent operation capture
+- [ ] uPoW proof linking
+- [ ] Agent registry integration
+- [ ] Real-time provenance updates
 
-### 3. Search & Query Interface
-- Search provenance records
-- Filter by miner, timestamp, type
-- View complete provenance chains
+### Phase 3: Verification
+- [ ] zkVerify integration
+- [ ] Proof generation
+- [ ] Verification API
+- [ ] Proof validation
 
-### 4. Record Viewer
-- Detailed view of provenance records
-- Arweave transaction verification
-- Chain of custody display
+### Phase 4: Advanced Features
+- [ ] Agent reputation system
+- [ ] Multi-agent collaboration tracking
+- [ ] Advanced analytics
+- [ ] GraphQL API
 
-## Security & Verification
+### Phase 5: Enterprise Features
+- [ ] Compliance reporting
+- [ ] Audit trail exports
+- [ ] Custom indexing
+- [ ] White-label solutions
 
-- **Immutable Storage**: All records permanently stored on Arweave
-- **Digital Signatures**: Cryptographic signing of provenance records
-- **Hash Verification**: Data integrity through SHA-256 hashing
-- **Chain Linking**: Records linked in verification chains
-
-## API Endpoints
-
-### POST /api/provenance
-Create a new provenance record
-
-```typescript
-// Request body
-{
-  type: 'compute' | 'proof' | 'reasoning',
-  minerId: string,
-  data: any,
-  metadata: ProvenanceMetadata
-}
-
-// Response
-{
-  success: true,
-  recordId: string,
-  arweaveId: string
-}
-```
-
-### GET /api/provenance/[id]
-Retrieve a provenance record
-
-### GET /api/provenance/search
-Search provenance records
-
-```typescript
-// Query parameters
-{
-  minerId?: string,
-  type?: string,
-  startTime?: number,
-  endTime?: number
-}
-```
-
-## Benefits of Arweave Provenance
-
-1. **Permanence**: Data stored forever with no ongoing costs
-2. **Tamper-Proof**: Cryptographic immutability ensures integrity
-3. **Decentralization**: No single point of failure
-4. **Verifiability**: Anyone can verify the provenance chain
-5. **Attribution**: Clear ownership and source tracking
-
-## Use Cases
-
-### AI Model Training
-- Log training data sources
-- Record model version evolution
-- Store training metrics and outputs
-
-### Decentralized AI Inference
-- Prove inference was performed
-- Store reasoning chains
-- Enable result verification
-
-### ZKML Verification
-- Store zero-knowledge proofs
-- Maintain proof verification records
-- Create audit trails for compliance
-
-## Future Enhancements
-
-- [ ] GraphQL API for complex queries
-- [ ] Real-time WebSocket updates
-- [ ] Multi-wallet support
-- [ ] Batch upload optimization
-- [ ] Advanced indexing with Arweave GraphQL
-- [ ] Integration with decentralized AI marketplaces
-
-## Resources
-
-- [Arweave Documentation](https://docs.arweave.org/)
-- [Arweave JS SDK](https://github.com/ArweaveTeam/arweave-js)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [PermaWeb](https://permaweb.io/)
-
-## Challenge Goals
-
-This project demonstrates:
-1. **Immutable AI proof storage** - Permanent records on Arweave
-2. **Attribution tracking** - Clear miner/compute ownership
-3. **Verifiable provenance** - Complete chains of custody
-4. **Foundation for audit trails** - Platform for future agent systems
+---
 
 ## License
 
 MIT License - See LICENSE file for details
 
-## Contributing
-
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
-
 ---
 
-**Built for transparent AI provenance on Arweave**
-
+**Built on Amadeus Network - Enabling transparent AI agent provenance**

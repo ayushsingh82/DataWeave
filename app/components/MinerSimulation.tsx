@@ -177,7 +177,7 @@ export function MinerSimulation({ onRecordCreated }: MinerSimulationProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-8">
       {/* Configuration Panel */}
       <div className="card p-6">
         <div className="flex items-center gap-2 mb-6">

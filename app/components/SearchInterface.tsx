@@ -112,7 +112,7 @@ export function SearchInterface({ records }: SearchInterfaceProps) {
     selectedMiner !== 'all';
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-8">
       {/* Search Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">

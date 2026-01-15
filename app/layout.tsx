@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DataWeave - Decentralized AI Compute Provenance on Arweave",
-  description: "Transparent provenance system for decentralized AI work with immutable storage on Arweave. Track AI compute outputs, miner operations, and ZK proofs with verifiable attribution.",
+  title: "DataWeave - Immutable Provenance for AI Agent Economy",
+  description: "Building transparent, verifiable provenance infrastructure for AI agents on Amadeus L1 - where every agent action, computation, and collaboration is permanently recorded and cryptographically verified.",
 };
 
 export default function RootLayout({
