@@ -5,6 +5,8 @@
 
 ---
 
+Pitch deck - https://docs.google.com/document/d/1L0b7h0tFtCH9g3q4dgrjeXFDRQWSQOxulx2ooo_3pv0/edit?tab=t.0
+
 ## Table of Contents
 
 - [Overview](#overview)
